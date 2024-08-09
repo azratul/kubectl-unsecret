@@ -19,8 +19,7 @@ func main() {
 	var namespace string = "default"
 
 	for i := 1; i < len(os.Args); i++ {
-		switch os.Args[i] {
-		case "-n", "--namespace":
+		if os.Args[i] == "-n" || os.Args[i] == "--namespace" {
 			if i+1 < len(os.Args) {
 				namespace = os.Args[i+1]
 				i++
@@ -28,10 +27,10 @@ func main() {
 				fmt.Println("Error: namespace flag requires a value")
 				os.Exit(1)
 			}
-		default:
-			if !strings.HasPrefix(os.Args[i], "-") {
-				secretName = os.Args[i]
-			}
+		} else if strings.HasPrefix(os.Args[i], "--namespace=") {
+			namespace = strings.SplitN(os.Args[i], "=", 2)[1]
+		} else if !strings.HasPrefix(os.Args[i], "-") {
+			secretName = os.Args[i]
 		}
 	}
 
