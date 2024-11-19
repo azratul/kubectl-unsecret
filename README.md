@@ -19,7 +19,7 @@ Download the pre-compiled binary from the Releases page and place it in your $PA
 #### Linux
 
 ```sh
-wget https://github.com/azratul/kubectl-unsecret/releases/download/v1.0.0/kubectl-unsecret-linux-amd64
+wget https://github.com/azratul/kubectl-unsecret/releases/download/v1.1.0/kubectl-unsecret-linux-amd64
 chmod +x kubectl-unsecret-linux-amd64
 sudo mv kubectl-unsecret-linux-amd64 /usr/local/bin/kubectl-unsecret
 ```
@@ -27,7 +27,7 @@ sudo mv kubectl-unsecret-linux-amd64 /usr/local/bin/kubectl-unsecret
 #### macOS
 
 ```sh
-wget https://github.com/azratul/kubectl-unsecret/releases/download/v1.0.0/kubectl-unsecret-darwin-amd64
+wget https://github.com/azratul/kubectl-unsecret/releases/download/v1.1.0/kubectl-unsecret-darwin-amd64
 chmod +x kubectl-unsecret-darwin-amd64
 sudo mv kubectl-unsecret-darwin-amd64 /usr/local/bin/kubectl-unsecret
 ```
@@ -39,16 +39,19 @@ Download the binary from the releases page and add it to your PATH.
 ## Usage
 
 ```sh 
-kubectl unsecret [SECRET_NAME] [--namespace=NAMESPACE]
+kubectl unsecret <secret_name> [-n <namespace> | --namespace <namespace>] [-o <output_format>]
 ```
 
-- `SECRET_NAME`: The name of the secret to decode.
-- `--namespace=NAMESPACE` (optional): The namespace of the secret. Defaults to the current namespace if not specified.
+Options:
+- `-n, --namespace <namespace>`: Specify the namespace (default is "default")
+- `-o, --output <output_format>`: Specify the output format (text|json|yaml) (default is "text")
+- `--help`: Show this help message
+- `--version`: Show version information
 
 ## Example
 
 ```sh
-kubectl unsecret my-secret --namespace=default
+kubectl unsecret my-secret --namespace=default -o json
 ```
 
 ## License
