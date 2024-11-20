@@ -64,7 +64,7 @@ func parseArgs(args []string) (string, string, string, error) {
 			} else {
 				return "", "", "", fmt.Errorf("Error: output flag requires a value (text|json|yaml)")
 			}
-		case "--help":
+		case "-h", "--help":
 			printUsage()
 			os.Exit(0)
 		case "--version":
